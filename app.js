@@ -23,8 +23,11 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    db.get("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], (err, row) => {
+    let query = "SELECT * FROM user WHERE username = '" + username + "' AND password = '" + password + "'";
+    console.log(query);
+    db.get(query, (err, row) => {
         if (err) {
+            console.log(err)
             res.status(500).json({ "error": err.message });
             return;
         } else if (!row) {
