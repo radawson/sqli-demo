@@ -5,27 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>SQLI Test</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
 
 
     <form method="post" action="/login">
-        <div class="container">
-            <input type="text" id="username" name="username"><br>
-            <input type="password" id="password" name="password"><br>
-            <input type="submit" value="Login">
+        <div class="box">
+            <h1>Login</h1>
+            <div class="container">
+                <label for="username">Username</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password"><br>
+                <br>
+                <input type="submit" value="Login">
+            </div>
+            <script>
+                if (document.location.hash === '#unauthorized') {
+                    document.write('<div class="unauthorized">Invalid Username or Password</div>');
+                } else if (document.location.hash === '#error') {
+                    document.write('<div class="error">An error has occured</div>');
+                }
+            </script>
         </div>
-        <script>
-            if (document.location.hash === '#unauthorized') {
-                document.write('<div class="unauthorized">Invalid Username or Password</div>');
-            } else if (document.location.hash === '#error') {
-                document.write('<div class="error">An error has occured</div>');
-            }
-        </script>
-
     </form>
 
 
